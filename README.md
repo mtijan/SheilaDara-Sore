@@ -33,8 +33,6 @@
   | `sentiment_score` | Skor numerik rule-based |
   | `sentiment_label` | Kategori: `pos` / `neg` / `neu` |
 
-> *Catatan:* Jika ada `timestamp`, digunakan untuk analisis timeline (opsional).
-
 ---
 
 ## 3. Proses Cleaning (Ringkas)
