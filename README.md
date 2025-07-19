@@ -3,7 +3,6 @@
 *“Seluruh metrik sentimen saat ini masih berbasis rule lexicon awal dan belum melalui validasi manual; interpretasi bersifat indikatif, bukan final.”*
 
 > **Status:** *Preliminary Insights (v0)* – Sentimen masih berbasis aturan (rule-based) dan **belum** divalidasi manual atau model ML lanjut (IndoBERT).  
-> Gunakan hasil ini sebagai indikasi awal, **bukan** sebagai kesimpulan final.
 
 ---
 
