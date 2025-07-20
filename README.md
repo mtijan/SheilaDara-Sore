@@ -2,7 +2,8 @@
 
 *“Seluruh metrik sentimen saat ini masih berbasis rule lexicon awal dan belum melalui validasi manual; interpretasi bersifat indikatif, bukan final.”*
 
-> **Status:** *Preliminary Insights (v0)* – Sentimen masih berbasis aturan (rule-based) dan **belum** divalidasi manual atau model ML lanjut (IndoBERT).  
+> **Status:** *Preliminary Insights (v0)* – Sentimen masih berbasis aturan (rule-based) dan **belum** divalidasi manual atau model ML lanjut (IndoBERT).
+> > **Waktu Pengambilan Data:** Data diambil pada rentang waktu satu bulan *19 Juli 2025 - 19 Juni 2025*
 
 ---
 
