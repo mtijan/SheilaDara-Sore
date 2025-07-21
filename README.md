@@ -151,15 +151,17 @@ Impact_v0 = 0.4 * SheilaMentionShare(%)
 
 ## 🚀 Snapshot Insights (v0)
 | Take‑away | Data point | So what? |
-|-----------|------------|----------|
-| **Story & ending dominate the chat** | *Plot/Ending* cluster holds **50.5 %** of all 6 147 comments (3 107 posts) while only **9.4 %** name‑checks Sheila. | Narrative pacing is what viewers talk about most, not cast. |
-| **Visual quality is a clear strength** | *Visual/Production* = **18.4 %** of comments; sentiment largely positive. | Cinematography can be spotlighted in promos & trailers. |
-| **Duo Sheila × Vidi sparks big love** | “Sheila & Vidi” greetings cluster = **7.7 %** of comments with **45.8 %** explicit Sheila mentions. | Pairing drives engagement—good content lever. |
-| **Where‑to‑watch questions are loud** | *Access/WhereToWatch* is small (**4.9 %**) but **95.7 %** of those posts call out Sheila. | Drop a pinned FAQ or link to cut repetitive neutral noise. |
-| **Pacing criticism is concentrated** | *Pace/Critique* only **3.6 %** of volume yet **35.6 %** mention Sheila while complaining. | Address tempo issues to avoid eroding goodwill. |
-| **“Keren!” one‑liners skew the mood** | *Short Praise* = **3.1 %**, 90 %+ positive bursts. | Good for topline positivity, but depth is shallow—don’t over‑weight. |
+|-------------|-----------------|---------------|
+| **Cerita & ending paling ramai dibahas** | Klaster *Plot/Ending* menampung **50,5 %** dari 6 147 komentar (3 107 post); hanya **9,4 %** di klaster ini yang menyebut Sheila. | Pace & akhir cerita jadi sorotan utama penonton, melebihi topik pemain. |
+| **Visual jadi kekuatan jelas** | *Visual/Production* = **18,4 %** komentar; mayoritas bernada positif. | Sinematografi layak di‑highlight di materi promo. |
+| **Duet Sheila × Vidi disukai** | Klaster “Sheila & Vidi” = **7,7 %** komentar dengan **45,8 %** eksplisit menyebut Sheila. | Kolaborasi ini memicu engagement—potensi konten lanjutan. |
+| **Pertanyaan “nonton di mana?” cukup bising** | *Access/WhereToWatch* memang kecil (**4,9 %**), tapi **95,7 %** komentarnya memanggil nama Sheila. | Buat FAQ / pinned comment untuk menekan pertanyaan berulang. |
+| **Kritik tempo terkonsentrasi** | *Pace/Critique* cuma **3,6 %** volume, namun **35,6 %** menyebut Sheila sambil komplain tempo. | Perbaikan ritme cerita perlu diprioritaskan agar reputasi tetap positif. |
+| **One‑liner “keren!” mewarnai sentimen** | *Short Praise* = **3,1 %**, >90 % positif singkat. | Bagus sebagai sinyal optimis, tapi kedalamannya minim—jangan terlalu berat menilai dari klaster ini saja. |
 
 ### TL;DR
-*Half the conversation is about plot & ending; visual flair is widely praised.  
-Fans love the Sheila–Vidi combo, but still nag about where to watch and pacing hiccups.  
-These findings are rule‑based & cluster‑derived — manual labels and ML fine‑tuning come next.*
+*Setengah percakapan penonton fokus ke alur & ending; visual dipuji.  
+Duet Sheila–Vidi menambah antusiasme, tetapi masih banyak yang menanyakan platform nonton dan mengeluhkan tempo cerita.  
+Semua temuan berbasis rule‑based & klaster—label manual dan model ML akan memperkuat angka di fase berikut.* 
+
+---
