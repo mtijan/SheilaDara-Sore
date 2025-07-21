@@ -163,6 +163,8 @@ Impact_v0 = 0.4 * SheilaMentionShare(%)
 *Setengah percakapan penonton fokus ke alur & ending; visual dipuji.  
 Duet Sheila–Vidi menambah antusiasme, tetapi masih banyak yang menanyakan platform nonton dan mengeluhkan tempo cerita.  
 Semua temuan berbasis rule‑based & klaster—label manual dan model ML akan memperkuat angka di fase berikut.* 
+Lebih banyak membahas peran dan personalitas dari sheila itu sendiri dibandingkan dengan Sheila sebagai pemeran SORE
+
 
 ### Sampel Comment Each Cluster
 
