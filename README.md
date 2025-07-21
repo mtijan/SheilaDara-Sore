@@ -111,21 +111,26 @@
 > **Kesimpulan Sementara:** Figur Sheila memicu keterlibatan lebih dalam & ekspresif; tone awal condong ke arah positif. Diperlukan validasi lebih lanjut secara manual (jika dibutuhkan) agar klaim sentimen lebih kredibel. -->
 
 ---
-## 6. 🧩 Topic Clusters (K‑Means v0)
+## 6. ## 🧩 Topic Clusters (K‑Means v0)
 
-| Cluster | Quick Meaning | Top Keywords | Comments | % of All | % Mention Sheila |
-|---------|---------------|--------------|----------|----------|------------------|
-| **Short Praise / Hype** | Spontan “keren banget” | *keren, keren banget, mantap* | `[C1]` | `[P1]%` | `[S1]%` |
-| **Sheila Appearance & Look** | Komentar soal penampilan | *sheila dara, cantik* | `[C2]` | `[P2]%` | `[S2]%` |
-| **Cross‑Reference Films** | Bandingkan dgn film lain | *partikelir, one cut of the dead* | `[C3]` | `[P3]%` | `[S3]%` |
-| **General / Neutral** | Info nonton, pernyataan biasa | *nonton, film ini, sore* | `[C4]` | `[P4]%` | `[S4]%` |
-| **Character Dynamics (Kukuh)** | Bahas Kukuh vs Sheila | *kukuh, lawan sepadan* | `[C5]` | `[P5]%` | `[S5]%` |
-| **Guest Requests** | “Bang undang …” | *undang, densu, radit* | `[C6]` | `[P6]%` | `[S6]%` |
-| **Podcast / Episode Context** | Podhub & lineup tamu | *podhub, vidi, datang* | `[C7]` | `[P7]%` | `[S7]%` |
-| **Personality / Introvert Chemistry** | Duo introvert ngobrol | *introvert, nyambung, seru* | `[C8]` | `[P8]%` | `[S8]%` |
+| Cluster | Quick Meaning | Top Keywords (sample) | Comments | % of All | % Mention Sheila |
+|---------|---------------|-----------------------|----------|----------|------------------|
+| **Plot / Ending** | Storyline & ending talk | *alur, ending, nanggung* | **3 107** | **50.5 %** | **9.40 %** |
+| **Visual / Production** | Cinematography & production value | *visual, look, sinematografi* | **1 129** | **18.4 %** | **8.86 %** |
+| **Sheila & Vidi Duo / Greetings** | Fans greeting both hosts | *sheila, vidi, kak* | **472** | **7.7 %** | **45.76 %** |
+| **Humor / Slang** | Jokes & casual banter | *bang, lu, slang* | **321** | **5.2 %** | **5.30 %** |
+| **Access / Where to Watch** | “Link please” & platform Q&A | *nonton di mana, link* | **301** | **4.9 %** | **95.68 %** |
+| **Pace / Critique** | Complaints about tempo | *lambat, pace, boring* | **222** | **3.6 %** | **35.59 %** |
+| **Short Praise** | One‑liner hype (“keren!”) | *keren, mantap, bgt* | **193** | **3.1 %** | **0.52 %** |
+| **Sheila‑Focused** | Direct comments about Sheila | *sheila, cantik, dara* | **170** | **2.8 %** | **9.41 %** |
+| **Acting / Chemistry** | Acting quality & on‑screen chemistry | *akting, chemistry, natural* | **119** | **1.9 %** | **16.81 %** |
+| **Personality & Introvert Chemistry** | “Duo introvert” vibe | *introvert, ngobrol, nyambung* | **113** | **1.8 %** | **13.27 %** |
 
-> **Cara isi angka ➜** jalankan `cluster_stats` lalu hitung:  
-> `comments`, `pct_all`, `sheila_share_pct` → copas ke tabel.
+> *Hasil Berasal dari `cluster_stats` (run date : 2025‑07‑21).*  
+<!-- > These clusters are still coarse; we’ll re‑run after adding extra stop‑words and manual checks. -->
+
+<!-- > **Cara isi angka ➜** jalankan `cluster_stats` lalu hitung:  
+> `comments`, `pct_all`, `sheila_share_pct` → copas ke tabel. -->
 
 **Kenapa penting?**  
 - Kita tahu topik pujian cepat mana yang paling ramai.  
