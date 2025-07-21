@@ -64,30 +64,31 @@
 
 ---
 
-## 5. Metrik Kunci (Isi Placeholder dengan Angka Nyata)
 
-| Metrik | Nilai (Contoh Placeholder) | Keterangan |
-|--------|----------------------------|------------|
+## 5. Metrik Kunci  
+
+| Metrik | Nilai | Keterangan |
+|--------|-------|------------|
 | Total komentar | `[TOTAL_COMMENTS]` | Setelah cleaning |
 | Pengguna unik | `[UNIQUE_USERS]` | Partisipasi |
-| Share top 10 user | `[TOP10_SHARE]%` | Dominasi partisipasi |
+| Share top 10 user | `[TOP10_SHARE]%` | Dominasi partisipasi |
 | Komentar sebut “Sheila” | `[SHEILA_SHARE]%` | Fokus figur |
-| Rata-rata token (Sheila vs Non) | `[AVG_TOKEN_SHEILA] / [AVG_TOKEN_NON]` | Depth |
-| Rata-rata emoji (Sheila vs Non) | `[EMOJI_SHEILA] / [EMOJI_NON]` | Ekspresivitas |
-| Sentimen global (pos/neg/neu) | `[POS_GLOB]% / [NEG_GLOB]% / [NEU_GLOB]%` | Rule-based |
-| Sentimen Sheila subset | `[POS_SHE]% / [NEG_SHE]% / [NEU_SHE]%` | Rule-based |
-| Positive lift Sheila | `[POS_LIFT]` poin persen | Perbedaan POS_SHE - POS_GLOB |
-| Emoji lift | `[EMOJI_LIFT]` | Selisih rata-rata |
-| Sheila Impact v0 | `[IMPACT_V0]` | Formula internal |
+| Rata‑rata token (Sheila / Non) | `[AVG_TOKEN_SHEILA] / [AVG_TOKEN_NON]` | Depth |
+| Rata‑rata emoji (Sheila / Non) | `[EMOJI_SHEILA] / [EMOJI_NON]` | Ekspresivitas |
+| Sentimen global (pos/neg/neu) | `[POS_GLOB]% / [NEG_GLOB]% / [NEU_GLOB]%` | Rule‑based |
+| Sentimen Sheila subset | `[POS_SHE]% / [NEG_SHE]% / [NEU_SHE]%` | Rule‑based |
+| Positive lift Sheila | `[POS_LIFT]` pp | POS_SHE – POS_GLOB |
+| Emoji lift | `[EMOJI_LIFT]` | Rata‑rata emoji selisih |
+| Sheila Impact v0 | `[IMPACT_V0]` | Formula awal |
 | Komentar bertanya | `[QUESTION_PCT]%` | Potensi FAQ |
 | Suspect user | `[SUSPECT_PCT]%` | Potensi bias |
-| Top 5 kata global | `[K1, K2, K3, K4, K5]` | Unigram |
-| Top 5 kata Sheila | `[S1, S2, S3, S4, S5]` | Unigram subset |
-| Top emoji | `[E1, E2, E3...]` | Tone visual |
+| Top 5 kata global | `[K1, K2, K3, K4, K5]` | Unigram |
+| Top 5 kata Sheila | `[S1, S2, S3, S4, S5]` | Unigram subset |
+| Top emoji | `[E1, E2, E3…]` | Tone visual |
 
 ---
 
-## 6. Insight Sementara (Narasi v0)
+<!-- ## 6. Insight Sementara (Narasi v0)
 
 > **Volume & Partisipasi:** Dataset memuat **[TOTAL_COMMENTS]** komentar dari **[UNIQUE_USERS]** akun. Pola distribusi menunjukkan long tail dengan kontribusi top 10 user sebesar **[TOP10_SHARE]%**—belum indikasi dominasi ekstrem, tetapi tetap dipantau.
 
@@ -107,9 +108,32 @@
 
 > **Kualitas Data:** Proporsi akun mencurigakan **[SUSPECT_PCT]%** → saat ini **[rendah/sedang/tinggi]**, belum perlu filtering agresif.
 
-> **Kesimpulan Sementara:** Figur Sheila memicu keterlibatan lebih dalam & ekspresif; tone awal condong ke arah positif. Diperlukan validasi lebih lanjut secara manual (jika dibutuhkan) agar klaim sentimen lebih kredibel.
+> **Kesimpulan Sementara:** Figur Sheila memicu keterlibatan lebih dalam & ekspresif; tone awal condong ke arah positif. Diperlukan validasi lebih lanjut secara manual (jika dibutuhkan) agar klaim sentimen lebih kredibel. -->
 
 ---
+## 6. 🧩 Topic Clusters (K‑Means v0)
+
+| Cluster | Quick Meaning | Top Keywords | Comments | % of All | % Mention Sheila |
+|---------|---------------|--------------|----------|----------|------------------|
+| **Short Praise / Hype** | Spontan “keren banget” | *keren, keren banget, mantap* | `[C1]` | `[P1]%` | `[S1]%` |
+| **Sheila Appearance & Look** | Komentar soal penampilan | *sheila dara, cantik* | `[C2]` | `[P2]%` | `[S2]%` |
+| **Cross‑Reference Films** | Bandingkan dgn film lain | *partikelir, one cut of the dead* | `[C3]` | `[P3]%` | `[S3]%` |
+| **General / Neutral** | Info nonton, pernyataan biasa | *nonton, film ini, sore* | `[C4]` | `[P4]%` | `[S4]%` |
+| **Character Dynamics (Kukuh)** | Bahas Kukuh vs Sheila | *kukuh, lawan sepadan* | `[C5]` | `[P5]%` | `[S5]%` |
+| **Guest Requests** | “Bang undang …” | *undang, densu, radit* | `[C6]` | `[P6]%` | `[S6]%` |
+| **Podcast / Episode Context** | Podhub & lineup tamu | *podhub, vidi, datang* | `[C7]` | `[P7]%` | `[S7]%` |
+| **Personality / Introvert Chemistry** | Duo introvert ngobrol | *introvert, nyambung, seru* | `[C8]` | `[P8]%` | `[S8]%` |
+
+> **Cara isi angka ➜** jalankan `cluster_stats` lalu hitung:  
+> `comments`, `pct_all`, `sheila_share_pct` → copas ke tabel.
+
+**Kenapa penting?**  
+- Kita tahu topik pujian cepat mana yang paling ramai.  
+- Cluster “Guest Requests” = backlog ide kolaborasi.  
+- Kritik terfokus di cluster “Character Dynamics” – bahan evaluasi cerita.
+
+---
+
 
 ## 7. Sheila Impact v0 – Formula
 
@@ -117,3 +141,4 @@
 Impact_v0 = 0.4 * SheilaMentionShare(%) 
           + 0.4 * max(0, PositiveLift_pp) 
           + 0.2 * max(0, EmojiLift * 10)
+“Cluster ‘Short Praise’ menyumbang [P1]% komentar dengan 90% sentimen positif.”)*
