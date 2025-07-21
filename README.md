@@ -142,15 +142,14 @@
 
 ## 7. Sheila Impact v0 – Formula
 
-```text
 Impact_v0 = 0.4 * SheilaMentionShare(%) 
           + 0.4 * max(0, PositiveLift_pp) 
           + 0.2 * max(0, EmojiLift * 10)
 “Cluster ‘Short Praise’ menyumbang [P1]% komentar dengan 90% sentimen positif.”)*
 
+---
 
 ## 🚀 Snapshot Insights (v0)
-
 | Take‑away | Data point | So what? |
 |-----------|------------|----------|
 | **Story & ending dominate the chat** | *Plot/Ending* cluster holds **50.5 %** of all 6 147 comments (3 107 posts) while only **9.4 %** name‑checks Sheila. | Narrative pacing is what viewers talk about most, not cast. |
