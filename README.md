@@ -164,4 +164,76 @@ Impact_v0 = 0.4 * SheilaMentionShare(%)
 Duet Sheila–Vidi menambah antusiasme, tetapi masih banyak yang menanyakan platform nonton dan mengeluhkan tempo cerita.  
 Semua temuan berbasis rule‑based & klaster—label manual dan model ML akan memperkuat angka di fase berikut.* 
 
+### Sampel Comment Each Cluster
+
+=== Access/WhereToWatch ===
+- part vidi bilang " punya istri sheila dara siapa sih yang gaa insecure" terdengar alami dan nyentuh banget walupun ngungkapinnya se-santai i
+- Senang banget akhirnya Sheila Dara hadir di podhub, seru, lucu liat chemistry Vidi dan Sheila. Saya bukan pecinta film drama romantis, tpi a
+- sheila dara cantik banget sumpah, visualnya ngangenin, gak ngebosenin, gimana yang ngungkapinnya, udah ah pokoknya the best shiela, luv poko
+- Episode paling favorit gua ada sheila dara, seneng banget sumpaaah... Ngakak terus... Sehat-sehat yah kalian semua... Happy terussss...
+- Finally Akhirnya Podhub Berhasil Juga Ngundang Kak Sheila Dara .. gemeshhh
+
+=== Acting/Chemistry ===
+- emang idaman sih pasangan vidi ma sheila ini , ga selebai kya yg di umbar2 di publik , tapi aslinya saling sayang , saling suport , saling b
+- Kocak banget mereka berdua ,kompak keren gw suka liat sheila wajahnya gak ngebosenin
+- Sumpah Dara Cintanya beneran, ternyata sebelum Nikah Vidi udah sakit, dan Dara menerima , keren keren
+- Om Ded tolong bikinin Adi program dong Keren ngehostnya, asik
+- Aslinya gayanya Vidi kalah sama gayanya istri, kalah saing pantesan dilarang, emang gayanya keren banget
+
+=== Humor/Slang ===
+- OMM UNDANG DUTA S07 DONG!!!!
+- Waaah....bang @denzu berjasa ini... Akhirnya...
+- ini ke 6x nya gua tonton loh bang viiiiidiiiiiii
+- Lihat sheila udah nih. Undang lagi om biar nyanyi bareng
+- Sukses truuuuussss bang vidiiiiiii
+
+=== Pace/Critique ===
+- Gila sabtu ini gue bahagia banget,sheila dtg ke podhub,dan selucu itu dia.....bahagia bgt pasti kak vidi
+- sesuai ekspektasi banget, liat sheila berkeliaran di podcast pasti ada di podhub dan ya finally worth to wait! seruuuu!!
+- Parah wehh abis nonton ini gue bahagia banget,sheila dtg ke podhub,dan selucu itu dia.....bahagia bgt pasti kak vidi
+- Yeahhhh.....   Akhirnya Ibu Negara di Podhub juga.  Pasti trending nih..  Semoga Next datang lagi ya jangan cuma pas mo promo film aja
+- MASYA ALLAH... TERIMA KASIH SHEILA UDAH MAU DATENG KE PODHUB. DAN INI EPISODE TER TER TER TERFAVORITE YANG PASTI BAKAL GW TONTON RATUSAN KAL
+
+=== Personality & Introvert Chemistry ===
+- Guys,sheila itu introvert bukan ansos. Introvert itu kalo sm orang yg udh kenal dan akrab dia bakal seru juga. Beda kalo ansos yg emg bner2 
+- sheilaa yang katanya introvert gak kalah energinya sama vidi di video ini
+- orang introvert klo masuk podhub jdi awkward gak sih  aneh tapi lucu
+- Extrovert fix ingetnya general introvert ingetnya emang yang detail
+- introvert seasik ini woyyyy
+
+=== Plot/Ending ===
+- Baru Mulai aja udah pecahh  Makin betah sama konten nya
+- WAIT?AKHIRNYAAAAA
+- Pas nonton tu aq ketawa" pokoknya happy bgtttt.... Tapi pas baca komen aq tu kaya nyes bgt dihati komen " sahabat podhub tu positif n mbikin
+- Podcast penuh tawa tp sedihh secara bersamaan dr awal smpe akhirr... Semangat yaa vid, aku  juga lagi survive sm penyakit ginjalku. Dan sllu
+- adhi tuh cocok setiap di undang di podhub, seru banget pas ngomong dan joke nya ngena di semua jadi kayak nyambung. pinter pembawaannya, kel
+
+=== Sheila & Vidi Duo / Greetings	 ===
+- Om ded kaya seneng bangga bgttt lihat mereka bahagia adem ayem apalagi lihat vidi yang bener* full senyum ceria dan dengan bangganya cerita 
+- Salut sama keterbukaan dan kejujuran Vidi & Sheila. Perjalanan cinta kalian itu bukti nyata kalau jodoh nggak akan kemana. Terima kasih suda
+- Ya Allah, beri vidi kesehatan & panjang umur, Krn energy nya membahagiakan banyak org.
+- Dari awal cuma mau nonton iseng, eh malah dapet pelajaran soal sabar, cinta, dan kehidupan. Sehat terus ya Vidi, Sheila, dan Om Deddy
+- Terharu banget waktu denger sheila ngomong kurangnya vidi cuma bersinnya doang. Liat deh mata vidi itu terharu mau nangis dan aku jg berasa.
+
+=== Sheila-Focused ===
+- Seumur umur baru kali ini gua nonton podcast si kukuh sampe abis. Kemaren2 ga kuat gua sama ni orang ngeselin banget
+- Kukuh biasanya chaos… tapi kali ini chaos-nya terstruktur karena Sheila juga sama gilanya
+- Lah kok malah nyambung, kukuh menemukan lawan sepadan
+- kali ini ngeliat kukuh jadi kelihatan lucu
+- Dua orang pinter yg ngeselin  Seruuuu bangettt… Kuat banget Kukuh ditatap sama sheila
+
+=== Short Praise ===
+- No 8
+- Trending no 1
+- Best couple of the year sih
+- Yandy Laurens is on his run to becoming one of the greatest Indonesian directors
+- 4:59 Gua tebak film nomor 1 Bang Pandji adalah Jokowi adalah Kita (2014)
+
+=== Visual/Production ===
+- Senin pagi ini ak nonton pudhub.. Sore nya ak lagsung bawa team ak nonton film Sore Ka Sheila Dara...  Film nya bagus banget  Kaka keren ban
+- kak Sheilaaa kak Vidiii, sukak bgt film "Sore" nya, dari trailer pun aku kehook dari premise ceritanya.. berasa balik lagi ke kualitas film-
+- Bahagia sihhh, setelah minggu lalu nge-skip, berharap Sabtu ini baik dan ternyata lebih dari baik, karena yg dinanti selama ini, dan makin b
+- "gue bersyukur Tuhan kasih karakter sore in real life dikehidupan gue"  setelah kak vidi ngomong gitu kepalaku langsung flashback ke film SO
+- Finally, the wait is over. Ibu Negara akhirnya nongol di Podhub. Aku juga udah nonton film SORE tgl 10 kemarin. Filmnya keren parah, mind-bl
+
 ---
