@@ -152,12 +152,12 @@ Impact_v0 = 0.4 * SheilaMentionShare(%)
 ## 🚀 Snapshot Insights (v0)
 | Take‑away | Data point | So what? |
 |-------------|-----------------|---------------|
-| **Cerita & ending paling ramai dibahas** | Klaster *Plot/Ending* menampung **50,5 %** dari 6 147 komentar (3 107 post); hanya **9,4 %** di klaster ini yang menyebut Sheila. | Pace & akhir cerita jadi sorotan utama penonton, melebihi topik pemain. |
+| **Cerita & ending paling ramai dibahas** | Klaster *Plot/Ending* menampung **50,5 %** dari 6.147 komentar (3.107 post); hanya **9,4 %** di klaster ini yang menyebut Sheila. | Pace & akhir cerita jadi sorotan utama penonton, melebihi topik mengenai aktor. |
 | **Visual jadi kekuatan jelas** | *Visual/Production* = **18,4 %** komentar; mayoritas bernada positif. | Sinematografi layak di‑highlight di materi promo. |
 | **Duet Sheila × Vidi disukai** | Klaster “Sheila & Vidi” = **7,7 %** komentar dengan **45,8 %** eksplisit menyebut Sheila. | Kolaborasi ini memicu engagement—potensi konten lanjutan. |
-| **Pertanyaan “nonton di mana?” cukup bising** | *Access/WhereToWatch* memang kecil (**4,9 %**), tapi **95,7 %** komentarnya memanggil nama Sheila. | Buat FAQ / pinned comment untuk menekan pertanyaan berulang. |
-| **Kritik tempo terkonsentrasi** | *Pace/Critique* cuma **3,6 %** volume, namun **35,6 %** menyebut Sheila sambil komplain tempo. | Perbaikan ritme cerita perlu diprioritaskan agar reputasi tetap positif. |
-| **One‑liner “keren!” mewarnai sentimen** | *Short Praise* = **3,1 %**, >90 % positif singkat. | Bagus sebagai sinyal optimis, tapi kedalamannya minim—jangan terlalu berat menilai dari klaster ini saja. |
+| **Pertanyaan “nonton di mana?” cukup populer** | *Access/WhereToWatch* memang kecil (**4,9 %**), tapi **95,7 %** komentarnya menyebutkan nama Sheila. | Buat FAQ / pinned comment untuk menekan pertanyaan berulang. |
+| **Kritik tempo terkonsentrasi** | *Pace/Critique* cuma **3,6 %** volume, namun **35,6 %** menyebut Sheila sambil memberikan kritik. | Perbaikan ritme cerita perlu diprioritaskan agar reputasi tetap positif. |
+| **One‑liner “keren!” mewarnai sentimen** | *Short Praise* = **3,1 %**, >90 % positif singkat. | Memberikan sinyal bagus dan bernilai optimis, tapi kurang mendalam sehingga terlalu susah hanya menilai berdasarkan klaster ini saja. |
 
 ### TL;DR
 *Setengah percakapan penonton fokus ke alur & ending; visual dipuji.  
