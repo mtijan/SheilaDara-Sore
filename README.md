@@ -147,3 +147,20 @@ Impact_v0 = 0.4 * SheilaMentionShare(%)
           + 0.4 * max(0, PositiveLift_pp) 
           + 0.2 * max(0, EmojiLift * 10)
 “Cluster ‘Short Praise’ menyumbang [P1]% komentar dengan 90% sentimen positif.”)*
+
+
+## 🚀 Snapshot Insights (v0)
+
+| Take‑away | Data point | So what? |
+|-----------|------------|----------|
+| **Story & ending dominate the chat** | *Plot/Ending* cluster holds **50.5 %** of all 6 147 comments (3 107 posts) while only **9.4 %** name‑checks Sheila. | Narrative pacing is what viewers talk about most, not cast. |
+| **Visual quality is a clear strength** | *Visual/Production* = **18.4 %** of comments; sentiment largely positive. | Cinematography can be spotlighted in promos & trailers. |
+| **Duo Sheila × Vidi sparks big love** | “Sheila & Vidi” greetings cluster = **7.7 %** of comments with **45.8 %** explicit Sheila mentions. | Pairing drives engagement—good content lever. |
+| **Where‑to‑watch questions are loud** | *Access/WhereToWatch* is small (**4.9 %**) but **95.7 %** of those posts call out Sheila. | Drop a pinned FAQ or link to cut repetitive neutral noise. |
+| **Pacing criticism is concentrated** | *Pace/Critique* only **3.6 %** of volume yet **35.6 %** mention Sheila while complaining. | Address tempo issues to avoid eroding goodwill. |
+| **“Keren!” one‑liners skew the mood** | *Short Praise* = **3.1 %**, 90 %+ positive bursts. | Good for topline positivity, but depth is shallow—don’t over‑weight. |
+
+### TL;DR
+*Half the conversation is about plot & ending; visual flair is widely praised.  
+Fans love the Sheila–Vidi combo, but still nag about where to watch and pacing hiccups.  
+These findings are rule‑based & cluster‑derived — manual labels and ML fine‑tuning come next.*
