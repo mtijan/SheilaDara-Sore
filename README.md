@@ -67,24 +67,43 @@
 
 ## 5. Metrik Kunci  
 
+<!-- | Metric | Value | Notes |
+|--------|-------|-------|
+| Total comments | **6 394** | after cleaning & dedup |
+| Unique users | **5 668** | healthy breadth |
+| Top‑10 user share | **1.16 %** | no single group dominates |
+| Comments that mention “Sheila” | **16.33 %** | strong centrality for one cast member |
+| Avg. tokens (Sheila / Non) | `[AVG_TOKEN_SHEILA] / [AVG_TOKEN_NON]` | _TODO_ |
+| Avg. emoji (Sheila / Non) | `[EMOJI_SHEILA] / [EMOJI_NON]` | _TODO_ |
+| Global sentiment (pos / neg / neu) | **20.22 % / 3.87 % / 75.91 %** | rule‑based |
+| Sheila subset sentiment | `[POS_SHE]% / [NEG_SHE]% / [NEU_SHE]%` | _TODO_ |
+| Positive lift (Sheila) | `[POS_LIFT]` pp | _TODO_ |
+| Emoji lift | `[EMOJI_LIFT]` | _TODO_ |
+| Sheila Impact v0 | `[IMPACT_V0]` | formula below |
+| Comments with “?” | **6.46 %** | potential FAQ |
+| Suspect users | `[SUSPECT_PCT]%` | _TODO_ |
+| Top‑5 global terms | **film · sheila · sore · nonton · vidi** |
+| Top‑5 Sheila terms | **sheila · dara · vidi · film · kak** |
+| Top emoji | `[E1, E2, E3…]` | _TODO_ | -->
+
 | Metrik | Nilai | Keterangan |
 |--------|-------|------------|
-| Total komentar | `[TOTAL_COMMENTS]` | Setelah cleaning |
-| Pengguna unik | `[UNIQUE_USERS]` | Partisipasi |
-| Share top 10 user | `[TOP10_SHARE]%` | Dominasi partisipasi |
-| Komentar sebut “Sheila” | `[SHEILA_SHARE]%` | Fokus figur |
-| Rata‑rata token (Sheila / Non) | `[AVG_TOKEN_SHEILA] / [AVG_TOKEN_NON]` | Depth |
-| Rata‑rata emoji (Sheila / Non) | `[EMOJI_SHEILA] / [EMOJI_NON]` | Ekspresivitas |
-| Sentimen global (pos/neg/neu) | `[POS_GLOB]% / [NEG_GLOB]% / [NEU_GLOB]%` | Rule‑based |
-| Sentimen Sheila subset | `[POS_SHE]% / [NEG_SHE]% / [NEU_SHE]%` | Rule‑based |
-| Positive lift Sheila | `[POS_LIFT]` pp | POS_SHE – POS_GLOB |
-| Emoji lift | `[EMOJI_LIFT]` | Rata‑rata emoji selisih |
-| Sheila Impact v0 | `[IMPACT_V0]` | Formula awal |
-| Komentar bertanya | `[QUESTION_PCT]%` | Potensi FAQ |
-| Suspect user | `[SUSPECT_PCT]%` | Potensi bias |
-| Top 5 kata global | `[K1, K2, K3, K4, K5]` | Unigram |
-| Top 5 kata Sheila | `[S1, S2, S3, S4, S5]` | Unigram subset |
-| Top emoji | `[E1, E2, E3…]` | Tone visual |
+| Total komentar | **6 394** | Sesudah cleaning & deduplikasi |
+| Pengguna unik | **5 668** | Jangkauan penonton |
+| Share 10 user teratas | **1,16 %** | Diskusi tidak dimonopoli segelintir akun |
+| Komentar menyebut “Sheila” | **16,33 %** | Sentralitas figur |
+| Rata‑rata token (Sheila / Non) | `[AVG_TOKEN_SHEILA] / [AVG_TOKEN_NON]` | _TODO_ |
+| Rata‑rata emoji (Sheila / Non) | `[EMOJI_SHEILA] / [EMOJI_NON]` | _TODO_ |
+| Sentimen global (pos / neg / neu) | **20,22 % / 3,87 % / 75,91 %** | Rule‑based |
+| Sentimen subset Sheila | `[POS_SHE]% / [NEG_SHE]% / [NEU_SHE]%` | _TODO_ |
+| Positive lift Sheila | `[POS_LIFT]` pp | Selisih positif Sheila vs global |
+| Emoji lift | `[EMOJI_LIFT]` | Selisih rata‑rata emoji |
+| Sheila Impact v0 | `[IMPACT_V0]` | Rumus di bawah |
+| Komentar bertanya (?) | **6,46 %** | Potensi FAQ |
+| Suspect user | `[SUSPECT_PCT]%` | Dugaan spam/bot |
+| 5 kata paling sering (global) | **film · sheila · sore · nonton · vidi** |
+| 5 kata top di komentar Sheila | **sheila · dara · vidi · film · kak** |
+| Emoji top | `[E1, E2, E3…]` | _TODO_ |
 
 ---
 
@@ -112,7 +131,7 @@
 
 ---
 ## 6. ## 🧩 Topic Clusters (K‑Means v0)
-
+<!-- 
 | Cluster | Quick Meaning | Top Keywords (sample) | Comments | % of All | % Mention Sheila |
 |---------|---------------|-----------------------|----------|----------|------------------|
 | **Plot / Ending** | Storyline & ending talk | *alur, ending, nanggung* | **3 107** | **50.5 %** | **9.40 %** |
@@ -124,9 +143,22 @@
 | **Short Praise** | One‑liner hype (“keren!”) | *keren, mantap, bgt* | **193** | **3.1 %** | **0.52 %** |
 | **Sheila‑Focused** | Direct comments about Sheila | *sheila, cantik, dara* | **170** | **2.8 %** | **9.41 %** |
 | **Acting / Chemistry** | Acting quality & on‑screen chemistry | *akting, chemistry, natural* | **119** | **1.9 %** | **16.81 %** |
-| **Personality & Introvert Chemistry** | “Duo introvert” vibe | *introvert, ngobrol, nyambung* | **113** | **1.8 %** | **13.27 %** |
+| **Personality & Introvert Chemistry** | “Duo introvert” vibe | *introvert, ngobrol, nyambung* | **113** | **1.8 %** | **13.27 %** | -->
 
-> *Hasil Berasal dari `cluster_stats` (run date : 2025‑07‑21).*  
+| Cluster (v0) | % of All | % mention Sheila | Key‑words snapshot |
+|--------------|----------|------------------|--------------------|
+| **Plot / Ending** | **50.5 %** | 9.40 % | film, ending, plot, selesai |
+| **Visual / Production** | 18.4 % | 8.86 % | visual, sinematografi, lighting |
+| **Sheila & Vidi Duo / Greetings** | 7.7 % | **45.76 %** | vidi, kak sheila, sehat |
+| **Humor / Slang** | 5.2 % | 5.30 % | bang, ya, lol |
+| **Access / Where‑to‑Watch** | 4.9 % | **95.68 %** | podhub, nonton di, link |
+| **Pace / Critique** | 3.6 % | 35.59 % | lambat, nanggung, tempo |
+| **Short Praise / Hype** | 3.1 % | 0.52 % | keren, keren banget, mantap |
+| **Sheila‑Focused (looks/persona)** | 2.8 % | 9.41 % | cantik, sheila dara |
+| **Acting / Chemistry** | 1.9 % | 16.81 % | akting, chemistry, natural |
+| **Personality & Introvert Chemistry** | 1.8 % | 13.27 % | introvert, nyambung |
+
+> *Hasil Berasal dari `cluster_stats` (run date : 2025‑07‑28).*  
 <!-- > These clusters are still coarse; we’ll re‑run after adding extra stop‑words and manual checks. -->
 
 <!-- > **Cara isi angka ➜** jalankan `cluster_stats` lalu hitung:  
@@ -142,10 +174,18 @@
 
 ## 7. Sheila Impact v0 – Formula
 
-Impact_v0 = 0.4 * SheilaMentionShare(%) 
+* **Skala Diskusi** – 6,3 k komentar · 5,7 k user · top‑10 akun hanya 1,16 % volume → komunitas tersebar.  
+* **Fokus Figur** – 16 % komentar menulis nama *Sheila* → perhatian signifikan.  
+* **Engagement Depth** – Komentar yg menyebut Sheila lebih panjang & lebih banyak emoji (angka tepat masih _todo_).  
+* **Pujian Spontan** – Klaster “Pujian Singkat” + “Fokus Sheila” memuat emoji ❤️😍; sinyal vibe positif cepat.  
+* **Poin Kritik** – Keluhan pace/ending terkonsentrasi di klaster “Tempo Kritik”.  
+* **Ide Konten** – Klaster “Akses/Nonton dimana” + “Guest Request” = backlog FAQ & calon kolaborasi (Densu, Radit).  
+* **FAQ Opportunity** – 6,46 % komentar tanda tanya → pasang info resmi untuk menekan repetisi.
+
+<!-- Impact_v0 = 0.4 * SheilaMentionShare(%) 
           + 0.4 * max(0, PositiveLift_pp) 
           + 0.2 * max(0, EmojiLift * 10)
-“Cluster ‘Short Praise’ menyumbang [P1]% komentar dengan 90% sentimen positif.”)*
+“Cluster ‘Short Praise’ menyumbang [P1]% komentar dengan 90% sentimen positif.”)* -->
 
 ---
 
