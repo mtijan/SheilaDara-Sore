@@ -88,22 +88,22 @@
 
 | Metrik | Nilai | Keterangan |
 |--------|-------|------------|
-| Total komentar | **6 394** | Sesudah cleaning & deduplikasi |
-| Pengguna unik | **5 668** | Jangkauan penonton |
-| Share 10 user teratas | **1,16 %** | Diskusi tidak dimonopoli segelintir akun |
-| Komentar menyebut “Sheila” | **16,33 %** | Sentralitas figur |
-| Rata‑rata token (Sheila / Non) | `[AVG_TOKEN_SHEILA] / [AVG_TOKEN_NON]` | _TODO_ |
-| Rata‑rata emoji (Sheila / Non) | `[EMOJI_SHEILA] / [EMOJI_NON]` | _TODO_ |
+| Total komentar | **6 394** | Setelah cleaning |
+| Pengguna unik | **5 668** | Partisipasi |
+| Share 10 user teratas | **1,16 %** | Dominasi partisipasi |
+| Komentar menyebut “Sheila” | **16,33 %** | Fokus figur |
+| Rata‑rata token (Sheila / Non) | **20,94 / 13,93** | Komentar Sheila jauh lebih panjang |
+| Rata‑rata emoji (Sheila / Non) | **0,042 / 0,027** | Lift +0,015 emoji |
 | Sentimen global (pos / neg / neu) | **20,22 % / 3,87 % / 75,91 %** | Rule‑based |
-| Sentimen subset Sheila | `[POS_SHE]% / [NEG_SHE]% / [NEU_SHE]%` | _TODO_ |
-| Positive lift Sheila | `[POS_LIFT]` pp | Selisih positif Sheila vs global |
-| Emoji lift | `[EMOJI_LIFT]` | Selisih rata‑rata emoji |
-| Sheila Impact v0 | `[IMPACT_V0]` | Rumus di bawah |
+| Sentimen subset Sheila | **30,46 % / 4,31 % / 65,23 %** | Pos lift +10,24 pp |
+| Positive lift Sheila | **10,24** pp | Selisih positif Sheila vs global |
+| Emoji lift | **0,015** | Rata‑rata emoji selisih |
+| Sheila Impact v0 | **10,66** | Skala internal (formula v0) |
 | Komentar bertanya (?) | **6,46 %** | Potensi FAQ |
-| Suspect user | `[SUSPECT_PCT]%` | Dugaan spam/bot |
+| Suspect user | **0,08 %** | Dugaan spam/bot—sangat rendah |
 | 5 kata paling sering (global) | **film · sheila · sore · nonton · vidi** |
 | 5 kata top di komentar Sheila | **sheila · dara · vidi · film · kak** |
-| Emoji top | `[E1, E2, E3…]` | _TODO_ |
+| Emoji top | **🥹, 🫶, 🫵** |
 
 ---
 
@@ -175,12 +175,16 @@
 ## 7. Sheila Impact v0 – Formula
 
 * **Skala Diskusi** – 6,3 k komentar · 5,7 k user · top‑10 akun hanya 1,16 % volume → komunitas tersebar.  
-* **Fokus Figur** – 16 % komentar menulis nama *Sheila* → perhatian signifikan.  
-* **Engagement Depth** – Komentar yg menyebut Sheila lebih panjang & lebih banyak emoji (angka tepat masih _todo_).  
-* **Pujian Spontan** – Klaster “Pujian Singkat” + “Fokus Sheila” memuat emoji ❤️😍; sinyal vibe positif cepat.  
-* **Poin Kritik** – Keluhan pace/ending terkonsentrasi di klaster “Tempo Kritik”.  
-* **Ide Konten** – Klaster “Akses/Nonton dimana” + “Guest Request” = backlog FAQ & calon kolaborasi (Densu, Radit).  
-* **FAQ Opportunity** – 6,46 % komentar tanda tanya → pasang info resmi untuk menekan repetisi.
+* **Fokus Figur** – 16 % komentar menyebut *Sheila*.  
+* **Engagement Depth** – Komentar yang menyebut Sheila rata‑rata **21 kata** (vs 14) dan sedikit lebih banyak emoji (0,042 vs 0,027).  
+* **Sentimen** – Global: 20 % positif, 4 % negatif.  Pada subset Sheila angka positif naik ke **30 %** (±10 pp lift).  
+* **Pujian Spontan** – Klaster “Pujian Singkat” + “Fokus Sheila” dipenuhi emoji 🥹 🫶 🫵.  
+* **Kritik** – Terpusat di klaster “Tempo / Kritik Pace”.  
+* **FAQ Gap** – 6,46 % komentar hanyalah pertanyaan (“nonton di mana?” dlsb).  
+* **Risiko Spam** – Suspect user hanya 0,08 % → noise sangat rendah.  
+* **Indeks Sementara** – *Sheila Impact v0* di **10,66** (angka mentah, akan dinormalisasi di versi v1).
+
+> *Angka sentimen masih rule‑based; sprint label 100 komentar akan memvalidasi akurasinya.*
 
 <!-- Impact_v0 = 0.4 * SheilaMentionShare(%) 
           + 0.4 * max(0, PositiveLift_pp) 
