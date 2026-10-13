@@ -29,4 +29,4 @@
 
 Komentar yang menyebut Sheila memang lebih sedikit, tetapi cenderung lebih panjang. Arah perbedaan ini juga terlihat pada **11 video** dengan cukup komentar di kedua kelompok. Isi komentar tersebut layak dibaca lebih jauh untuk mengetahui topik yang sering dibahas.
 
-Aturan kata lebih sering memberi label positif pada komentar yang menyebut Sheila, tetapi **belum cukup untuk menyimpulkan pendapat penonton**. Selain itu, **71,72%** observasi berasal dari lima video. Jadi, hasil ini menunjukkan pola dalam ekspor yang tersedia; tema dan nada komentarnya perlu diperiksa per video serta dinilai manusia sebelum menjadi kesimpulan yang lebih luas.
+Aturan kata lebih sering memberi label positif pada komentar yang menyebut Sheila, tetapi **belum cukup untuk menyimpulkan pendapat penonton**. Selain itu, **71,72%** observasi berasal dari lima video. Jadi, hasil ini menunjukkan pola dalam ekspor yang tersedia; tema dan nada komentarnya perlu diperiksa per video serta dinilai kembali.
