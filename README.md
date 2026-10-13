@@ -42,34 +42,3 @@ Saya membuat satu unit analisis berupa **ID video + akun + teks komentar**. Sete
 | **417 komentar** memiliki tanda tanya | Tinjau pertanyaan faktual secara manual sebelum menyusun FAQ. Tanda tanya saja belum tentu pertanyaan yang perlu dijawab. |
 
 Langkah analisis per video, perbandingan dalam video, telaah sampel, dan antrean anotasi tersedia langsung di [notebook utama](Sheila_Dara_Sore_YT_Sentiment.ipynb). [Telaah awal](reviews/README.md) dilakukan dengan bantuan asisten untuk menemukan calon masalah; hasilnya **bukan validasi manusia independen**. Sampel anotasi mentah disimpan lokal dan tidak masuk repositori.
-
-## Cara saya mengerjakannya
-
-1. Memvalidasi kolom CSV, mengekstrak ID video, menghapus baris tidak lengkap, dan menghapus duplikat dalam video yang sama.
-2. Menghitung penyebutan Sheila, panjang komentar, dan ringkasan per video.
-3. Menerapkan baseline sentimen berbasis kata, negasi pendek, penguat, dan emoji. Perhitungan ada di [analysis.py](analysis.py).
-4. Mengeksplorasi kelompok kata dengan TF-IDF dan K-Means. Nomor klaster belum diberi nama tema karena sampelnya masih perlu ditinjau.
-5. Membuat diagram batang dari metrik agregat yang sama untuk notebook dan README melalui [visualize.py](visualize.py), lalu memeriksa pipeline dengan pengujian.
-
-**Batas data:** sumber dan metode pemilihan video, waktu pengambilan komentar, serta izin penggunaan ulang tidak tercatat di ekspor. Kolom `publish_date` adalah tanggal publikasi video, bukan tanggal komentar. Analisis ini hanya menggambarkan ekspor yang tersedia. Nama akun dan teks komentar ada di CSV sumber, sedangkan grafik serta laporan turunan menggunakan agregat. Belum ada angka precision, recall, atau akurasi sentimen yang sah.
-
-## Jalankan sendiri
-
-Butuh Python **3.10+**. Dari folder proyek:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-python -m notebook
-```
-
-Buka [Sheila_Dara_Sore_YT_Sentiment.ipynb](Sheila_Dara_Sore_YT_Sentiment.ipynb) dan jalankan sel dari atas. Tabel serta grafik sudah tersimpan sebagai output sehingga juga terlihat tanpa menjalankan ulang notebook. Untuk membangun ulang hasil melalui terminal:
-
-```powershell
-python analysis.py
-python visualize.py
-python -m unittest discover -s tests -v
-```
-
-Eksperimen di [Try_model.ipynb](Try_model.ipynb) hanya mengevaluasi klasifikasi bila file label manusia lokal `manual_labels.csv` tersedia. Tanpa label tersebut, notebook melewati evaluasi dan tidak menampilkan klaim performa.
