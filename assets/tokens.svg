@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="350" viewBox="0 0 900 350" role="img" aria-labelledby="tokens-title tokens-desc">
+  <title id="tokens-title">Rata-rata panjang komentar</title>
+  <desc id="tokens-desc">Komentar yang menyebut Sheila rata-rata 21,01 token; komentar lain 14,12 token.</desc>
+  <rect width="900" height="350" fill="#FFFFFF"/>
+  <text x="36" y="42" fill="#23313F" font-size="23" font-weight="600" font-family="Arial, sans-serif">Rata-rata panjang komentar</text>
+  <text x="255" y="81" fill="#526170" font-size="13" font-family="Arial, sans-serif">Rata-rata token per komentar</text>
+  <line x1="255.0" y1="96" x2="255.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="255.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">0</text>
+  <line x1="345.0" y1="96" x2="345.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="345.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">5</text>
+  <line x1="435.0" y1="96" x2="435.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="435.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">10</text>
+  <line x1="525.0" y1="96" x2="525.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="525.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">15</text>
+  <line x1="615.0" y1="96" x2="615.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="615.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">20</text>
+  <line x1="705.0" y1="96" x2="705.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="705.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">25</text>
+  <line x1="795.0" y1="96" x2="795.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="795.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">30</text>
+  <text x="36" y="143" fill="#23313F" font-size="16" font-family="Arial, sans-serif">Menyebut Sheila</text>
+  <rect x="255" y="120" width="378.2" height="32" fill="#2364AA"/>
+  <text x="643.2" y="143" fill="#23313F" font-size="15" font-weight="600" font-family="Arial, sans-serif">21,01</text>
+  <text x="36" y="225" fill="#23313F" font-size="16" font-family="Arial, sans-serif">Komentar lain</text>
+  <rect x="255" y="202" width="254.2" height="32" fill="#8291A0"/>
+  <text x="519.2" y="225" fill="#23313F" font-size="15" font-weight="600" font-family="Arial, sans-serif">14,12</text>
+  <text x="36" y="322" fill="#526170" font-size="14" font-family="Arial, sans-serif">Panjang komentar bukan ukuran kualitas pendapat.</text>
+</svg>

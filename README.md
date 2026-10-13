@@ -1,285 +1,75 @@
-# SheilaDara-Sore
+# Apa yang bisa dibaca dari komentar YouTube tentang Sheila Dara dan *Sore*?
 
-*“Seluruh metrik sentimen saat ini masih berbasis rule lexicon awal dan belum melalui validasi manual; interpretasi bersifat indikatif, bukan final.”*
+**Portofolio analisis data dan teks berbahasa Indonesia.** Proyek ini mengubah ekspor komentar YouTube menjadi temuan yang dapat ditelusuri: mulai dari membetulkan hitungan video, membandingkan kelompok komentar, sampai menentukan analisis mana yang masih perlu diperiksa manusia.
 
-> **Status:** *Preliminary Insights (v0)* – Sentimen masih berbasis aturan (rule-based) dan **belum** divalidasi manual atau model ML lanjut (IndoBERT).
-> > **Waktu Pengambilan Data:** Data diambil pada rentang waktu satu bulan *19 Juli 2025 - 19 Juni 2025*
+**Peran saya:** pembersihan data, analisis eksploratif, visualisasi, pipeline Python, dan dokumentasi.
 
----
+**Alat:** Python, Pandas, scikit-learn, notebook, SVG.
+**Mulai dari:** [notebook analisis dengan hasil yang sudah tampil](Sheila_Dara_Sore_YT_Sentiment.ipynb).
 
-## 1. Tujuan Proyek
+## Cerita di balik data
 
-1. Memetakan perilaku komentar penonton (volume, partisipasi, pola ekspresi).
-2. Mengukur fokus dan intensitas keterlibatan terhadap figur **Sheila Dara**.
-3. Membangun *baseline* sentimen + rancangan awal **Sheila Impact Index** (versi v0).
-4. Menyusun landasan untuk pengembangan model sentimen berbasis Machine Learning (IndoBERT) di tahap berikutnya.
+Ekspor awal berisi **11.385 baris** dan **73 variasi URL**. Setelah URL diidentifikasi berdasarkan ID video, ternyata hanya ada **48 video**. Sebagian baris juga tidak lengkap atau mengulang komentar dengan akun dan teks yang sama pada video yang sama. Jika data mentah langsung dihitung, jumlah observasi akan menyesatkan.
 
----
+Saya membuat satu unit analisis berupa **ID video + akun + teks komentar**. Setelah 184 baris tidak lengkap dan 4.783 pengulangan dikeluarkan, tersedia **6.418 observasi** untuk dianalisis. Komentar identik pada video yang berbeda tetap dihitung sebagai observasi berbeda.
 
-## 2. Sumber & Struktur Data
+![Diagram batang jumlah baris sebelum dan sesudah pembersihan: 11.385 menjadi 6.418.](assets/quality.svg)
 
-- Sumber: Komentar publik (YouTube / platform lain) yang sudah diekstraksi dan digabung.
-- Format akhir (after cleaning): satu baris = satu komentar.
-- Kolom utama:
-  | Kolom | Deskripsi Singkat |
-  |-------|-------------------|
-  | `username` | Username ter-normalisasi |
-  | `comment_raw` | Teks asli (termasuk emoji) |
-  | `comment_clean` | Versi dibersihkan ringan (URL dihapus, lowercase) |
-  | `comment_plain` | Versi alfanumerik (untuk tokenisasi sederhana) |
-  | `token_len` | Jumlah token (kata) |
-  | `emoji_count` | Jumlah emoji di komentar |
-  | `has_sheila` | Boolean: apakah menyebut “sheila” / “sheila dara” |
-  | `suspect_user` | Heuristik akun mencurigakan (numeric-heavy) |
-  | `sentiment_score` | Skor numerik rule-based |
-  | `sentiment_label` | Kategori: `pos` / `neg` / `neu` |
+## Temuan utama
 
----
+**1. Sekitar satu dari enam komentar menyebut Sheila.** Ada **1.046 dari 6.418 observasi (16,30%)** yang memuat kata “Sheila”. Angka ini menyatakan frekuensi penyebutan dalam ekspor, bukan proporsi seluruh penonton atau penggemar. [Lihat grafik jumlah komentar](assets/mention.svg).
 
-## 3. Proses Cleaning (Ringkas)
+**2. Komentar yang menyebut Sheila cenderung lebih panjang.** Rata-ratanya **21,01 token**, dibanding **14,12 token** pada komentar lain. Median masing-masing **13** dan **8** token. Pada 11 video yang memiliki sedikitnya 10 komentar di setiap kelompok, arah perbedaannya sama.
 
-1. Standardisasi nama kolom, drop baris kosong untuk `username` & `comment`.
-2. Normalisasi username (hapus `@`, lowercase, hilangkan spasi & karakter kontrol).
-3. Simpan dua versi teks (`comment_clean` & `comment_plain`) agar:
-   - `clean` mempertahankan emoji untuk fitur emosi.
-   - `plain` memudahkan tokenisasi & pencocokan leksikon.
-4. Hilangkan duplikat berdasarkan pasangan `(username, comment_raw)`.
-5. Buat fitur: panjang karakter/token, flag pertanyaan (`?`), emoji, flag sebut “Sheila”.
-6. Tandai akun mencurigakan (rasio digit > 50% & panjang > 10, atau blok digit panjang).
+![Diagram batang rata-rata token per komentar: 21,01 untuk komentar yang menyebut Sheila dan 14,12 untuk komentar lain.](assets/tokens.svg)
 
----
+**3. Sebagian besar observasi terkumpul di sedikit video.** Lima video dengan komentar terbanyak menyumbang **71,72%** observasi. Karena itu, angka gabungan saja kurang cukup untuk menggambarkan seluruh 48 video. [Laporan per video tersedia sebagai CSV](reports/video_summary.csv).
 
-## 4. Metodologi Sentimen (Rule-Based v0)
+![Diagram batang persentase observasi: lima video teratas 71,72 persen dan 43 video lainnya 28,28 persen.](assets/concentration.svg)
 
-| Komponen | Penjelasan |
-|----------|-----------|
-| Lexicon kata positif & negatif | Daftar kata/ungkapan umum (slang + standar) |
-| Bigram frasa penting | Misal: `akting natural`, `ending nanggung` |
-| Emoji positif/negatif | ❤️ 😍 😂 👍 vs 😒 😔 😡 👎 |
-| Negasi | Membalik polaritas kata berikutnya: `tidak`, `gak`, `kurang`, `bukan` |
-| Intensifier | Menambah bobot (misal: `banget`, `sangat`, `bgt`) |
-| Skor akhir | Penjumlahan bobot → >0 = `pos`, <0 = `neg`, 0 = `neu` |
+**4. Aturan sentimen memberi sinyal awal, belum kesimpulan opini publik.** Aturan kata menandai **26,96%** komentar yang menyebut Sheila sebagai positif, dibanding **14,50%** komentar lain. Perbedaan ini konsisten arahnya pada 11 video yang memenuhi batas sampel di atas. Namun, aturan belum dinilai terhadap label manusia, sehingga angka ini **tidak boleh dibaca sebagai akurasi model atau bukti sebab akibat**.
 
-> *Keterbatasan:* Belum mengenali sarkasme, ironi halus, konteks multi-kalimat, atau kalimat campuran +/– yang kompleks.
+![Diagram batang persentase label positif menurut aturan kata: 26,96 persen dan 14,50 persen; label belum divalidasi manusia.](assets/sentiment.svg)
 
----
+## Apa yang sebaiknya dilakukan dari temuan ini?
 
+| Temuan | Langkah yang dapat diuji |
+| --- | --- |
+| Banyak URL dan baris berulang | Gunakan ID video sebagai kunci saat impor dan audit duplikat sebelum membuat dashboard. |
+| Lima video mendominasi data | Tampilkan hasil per video; kumpulkan sampel yang lebih seimbang sebelum menyimpulkan pola audiens. |
+| Komentar Sheila lebih panjang | Baca dan kodekan sampel komentar untuk melihat topik berulang. Panjang teks saja belum menjelaskan alasannya. |
+| Label positif aturan berbeda antarkelompok | Minta penilai manusia independen memberi label, lalu ukur kesalahan aturan sebelum memakai klaim sentimen. |
+| **417 komentar** memiliki tanda tanya | Tinjau pertanyaan faktual secara manual sebelum menyusun FAQ. Tanda tanya saja belum tentu pertanyaan yang perlu dijawab. |
 
-## 5. Metrik Kunci  
+Langkah analisis per video, perbandingan dalam video, telaah sampel, dan antrean anotasi tersedia langsung di [notebook utama](Sheila_Dara_Sore_YT_Sentiment.ipynb). [Telaah awal](reviews/README.md) dilakukan dengan bantuan asisten untuk menemukan calon masalah; hasilnya **bukan validasi manusia independen**. Sampel anotasi mentah disimpan lokal dan tidak masuk repositori.
 
-<!-- | Metric | Value | Notes |
-|--------|-------|-------|
-| Total comments | **6 394** | after cleaning & dedup |
-| Unique users | **5 668** | healthy breadth |
-| Top‑10 user share | **1.16 %** | no single group dominates |
-| Comments that mention “Sheila” | **16.33 %** | strong centrality for one cast member |
-| Avg. tokens (Sheila / Non) | `[AVG_TOKEN_SHEILA] / [AVG_TOKEN_NON]` | _TODO_ |
-| Avg. emoji (Sheila / Non) | `[EMOJI_SHEILA] / [EMOJI_NON]` | _TODO_ |
-| Global sentiment (pos / neg / neu) | **20.22 % / 3.87 % / 75.91 %** | rule‑based |
-| Sheila subset sentiment | `[POS_SHE]% / [NEG_SHE]% / [NEU_SHE]%` | _TODO_ |
-| Positive lift (Sheila) | `[POS_LIFT]` pp | _TODO_ |
-| Emoji lift | `[EMOJI_LIFT]` | _TODO_ |
-| Sheila Impact v0 | `[IMPACT_V0]` | formula below |
-| Comments with “?” | **6.46 %** | potential FAQ |
-| Suspect users | `[SUSPECT_PCT]%` | _TODO_ |
-| Top‑5 global terms | **film · sheila · sore · nonton · vidi** |
-| Top‑5 Sheila terms | **sheila · dara · vidi · film · kak** |
-| Top emoji | `[E1, E2, E3…]` | _TODO_ | -->
+## Cara saya mengerjakannya
 
-| Metrik | Nilai | Keterangan |
-|--------|-------|------------|
-| Total komentar | **6 394** | Setelah cleaning |
-| Pengguna unik | **5 668** | Partisipasi |
-| Share 10 user teratas | **1,16 %** | Dominasi partisipasi |
-| Komentar menyebut “Sheila” | **16,33 %** | Fokus figur |
-| Rata‑rata token (Sheila / Non) | **20,94 / 13,93** | Komentar Sheila jauh lebih panjang |
-| Rata‑rata emoji (Sheila / Non) | **0,042 / 0,027** | Lift +0,015 emoji |
-| Sentimen global (pos / neg / neu) | **20,22 % / 3,87 % / 75,91 %** | Rule‑based |
-| Sentimen subset Sheila | **30,46 % / 4,31 % / 65,23 %** | Pos lift +10,24 pp |
-| Positive lift Sheila | **10,24** pp | Selisih positif Sheila vs global |
-| Emoji lift | **0,015** | Rata‑rata emoji selisih |
-| Sheila Impact v0 | **10,66** | Skala internal (formula v0) |
-| Komentar bertanya (?) | **6,46 %** | Potensi FAQ |
-| Suspect user | **0,08 %** | Dugaan spam/bot—sangat rendah |
-| 5 kata paling sering (global) | **film · sheila · sore · nonton · vidi** |
-| 5 kata top di komentar Sheila | **sheila · dara · vidi · film · kak** |
-| Emoji top | **🥹, 🫶, 🫵** |
+1. Memvalidasi kolom CSV, mengekstrak ID video, menghapus baris tidak lengkap, dan menghapus duplikat dalam video yang sama.
+2. Menghitung penyebutan Sheila, panjang komentar, dan ringkasan per video.
+3. Menerapkan baseline sentimen berbasis kata, negasi pendek, penguat, dan emoji. Perhitungan ada di [analysis.py](analysis.py).
+4. Mengeksplorasi kelompok kata dengan TF-IDF dan K-Means. Nomor klaster belum diberi nama tema karena sampelnya masih perlu ditinjau.
+5. Membuat diagram batang dari metrik agregat yang sama untuk notebook dan README melalui [visualize.py](visualize.py), lalu memeriksa pipeline dengan pengujian.
 
----
+**Batas data:** sumber dan metode pemilihan video, waktu pengambilan komentar, serta izin penggunaan ulang tidak tercatat di ekspor. Kolom `publish_date` adalah tanggal publikasi video, bukan tanggal komentar. Analisis ini hanya menggambarkan ekspor yang tersedia. Nama akun dan teks komentar ada di CSV sumber, sedangkan grafik serta laporan turunan menggunakan agregat. Belum ada angka precision, recall, atau akurasi sentimen yang sah.
 
-<!-- ## 6. Insight Sementara (Narasi v0)
+## Jalankan sendiri
 
-> **Volume & Partisipasi:** Dataset memuat **[TOTAL_COMMENTS]** komentar dari **[UNIQUE_USERS]** akun. Pola distribusi menunjukkan long tail dengan kontribusi top 10 user sebesar **[TOP10_SHARE]%**—belum indikasi dominasi ekstrem, tetapi tetap dipantau.
+Butuh Python **3.10+**. Dari folder proyek:
 
-> **Fokus Figur:** Sekitar **[SHEILA_SHARE]%** komentar menyebut “Sheila”. Ini menandakan figur tersebut menjadi salah satu pusat perhatian audiens.
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m notebook
+```
 
-> **Kedalaman & Ekspresivitas:** Komentar yang menyebut Sheila lebih panjang (**[AVG_TOKEN_SHEILA] vs [AVG_TOKEN_NON] token**) dan menggunakan emoji lebih sering (**[EMOJI_SHEILA] vs [EMOJI_NON]**). Ini mengindikasikan *engagement emosional lebih intens* saat figur dibahas.
+Buka [Sheila_Dara_Sore_YT_Sentiment.ipynb](Sheila_Dara_Sore_YT_Sentiment.ipynb) dan jalankan sel dari atas. Tabel serta grafik sudah tersimpan sebagai output sehingga juga terlihat tanpa menjalankan ulang notebook. Untuk membangun ulang hasil melalui terminal:
 
-> **Tema Bahasa:** Global didominasi kata: **[K1, K2, K3, K4, K5]**. Subset Sheila menonjol pada: **[S1, S2, S3, S4, S5]** → fokus pada aspek akting, chemistry, dan daya tarik personal.
+```powershell
+python analysis.py
+python visualize.py
+python -m unittest discover -s tests -v
+```
 
-> **Sentimen (Preliminary – Rule-Based):** Global: **[POS_GLOB]% pos**, **[NEG_GLOB]% neg**, **[NEU_GLOB]% neu**. Subset Sheila: **[POS_SHE]% pos** (lift +**[POS_LIFT]**), **[NEG_SHE]% neg**, sisanya netral. *Angka dapat berubah setelah validasi manual & model.*
-
-> **Ekspresi Visual:** Emoji dominan seperti **[E1, E2, E3]** mendukung tone apresiatif (indikatif, bukan konklusif).
-
-> **Sheila Impact v0:** Skor awal **[IMPACT_V0]** (gabungan share Sheila, positive lift, emoji expressiveness). Ini masih *indikator internal*, bukan indeks final.
-
-> **Informasi vs Opini:** Sekitar **[QUESTION_PCT]%** komentar berupa pertanyaan; peluang membuat FAQ / konten edukatif (misal platform nonton, jadwal rilis).
-
-> **Kualitas Data:** Proporsi akun mencurigakan **[SUSPECT_PCT]%** → saat ini **[rendah/sedang/tinggi]**, belum perlu filtering agresif.
-
-> **Kesimpulan Sementara:** Figur Sheila memicu keterlibatan lebih dalam & ekspresif; tone awal condong ke arah positif. Diperlukan validasi lebih lanjut secara manual (jika dibutuhkan) agar klaim sentimen lebih kredibel. -->
-
----
-## 6. ## 🧩 Topic Clusters (K‑Means v0)
-<!-- 
-| Cluster | Quick Meaning | Top Keywords (sample) | Comments | % of All | % Mention Sheila |
-|---------|---------------|-----------------------|----------|----------|------------------|
-| **Plot / Ending** | Storyline & ending talk | *alur, ending, nanggung* | **3 107** | **50.5 %** | **9.40 %** |
-| **Visual / Production** | Cinematography & production value | *visual, look, sinematografi* | **1 129** | **18.4 %** | **8.86 %** |
-| **Sheila & Vidi Duo / Greetings** | Fans greeting both hosts | *sheila, vidi, kak* | **472** | **7.7 %** | **45.76 %** |
-| **Humor / Slang** | Jokes & casual banter | *bang, lu, slang* | **321** | **5.2 %** | **5.30 %** |
-| **Access / Where to Watch** | “Link please” & platform Q&A | *nonton di mana, link* | **301** | **4.9 %** | **95.68 %** |
-| **Pace / Critique** | Complaints about tempo | *lambat, pace, boring* | **222** | **3.6 %** | **35.59 %** |
-| **Short Praise** | One‑liner hype (“keren!”) | *keren, mantap, bgt* | **193** | **3.1 %** | **0.52 %** |
-| **Sheila‑Focused** | Direct comments about Sheila | *sheila, cantik, dara* | **170** | **2.8 %** | **9.41 %** |
-| **Acting / Chemistry** | Acting quality & on‑screen chemistry | *akting, chemistry, natural* | **119** | **1.9 %** | **16.81 %** |
-| **Personality & Introvert Chemistry** | “Duo introvert” vibe | *introvert, ngobrol, nyambung* | **113** | **1.8 %** | **13.27 %** | -->
-
-| Cluster (v0) | % of All | % mention Sheila | Key‑words snapshot |
-|--------------|----------|------------------|--------------------|
-| **Plot / Ending** | **50.5 %** | 9.40 % | film, ending, plot, selesai |
-| **Visual / Production** | 18.4 % | 8.86 % | visual, sinematografi, lighting |
-| **Sheila & Vidi Duo / Greetings** | 7.7 % | **45.76 %** | vidi, kak sheila, sehat |
-| **Humor / Slang** | 5.2 % | 5.30 % | bang, ya, lol |
-| **Access / Where‑to‑Watch** | 4.9 % | **95.68 %** | podhub, nonton di, link |
-| **Pace / Critique** | 3.6 % | 35.59 % | lambat, nanggung, tempo |
-| **Short Praise / Hype** | 3.1 % | 0.52 % | keren, keren banget, mantap |
-| **Sheila‑Focused (looks/persona)** | 2.8 % | 9.41 % | cantik, sheila dara |
-| **Acting / Chemistry** | 1.9 % | 16.81 % | akting, chemistry, natural |
-| **Personality & Introvert Chemistry** | 1.8 % | 13.27 % | introvert, nyambung |
-
-> *Hasil Berasal dari `cluster_stats` (run date : 2025‑07‑28).*  
-<!-- > These clusters are still coarse; we’ll re‑run after adding extra stop‑words and manual checks. -->
-
-<!-- > **Cara isi angka ➜** jalankan `cluster_stats` lalu hitung:  
-> `comments`, `pct_all`, `sheila_share_pct` → copas ke tabel. -->
-
-**Kenapa penting?**  
-- Kita tahu topik pujian cepat mana yang paling ramai.  
-- Cluster “Guest Requests” = backlog ide kolaborasi.  
-- Kritik terfokus di cluster “Character Dynamics” – bahan evaluasi cerita.
-
----
-
-
-## 7. Sheila Impact v0 – Formula
-
-* **Skala Diskusi** – 6,3 k komentar · 5,7 k user · top‑10 akun hanya 1,16 % volume → komunitas tersebar.  
-* **Fokus Figur** – 16 % komentar menyebut *Sheila*.  
-* **Engagement Depth** – Komentar yang menyebut Sheila rata‑rata **21 kata** (vs 14) dan sedikit lebih banyak emoji (0,042 vs 0,027).  
-* **Sentimen** – Global: 20 % positif, 4 % negatif.  Pada subset Sheila angka positif naik ke **30 %** (±10 pp lift).  
-* **Pujian Spontan** – Klaster “Pujian Singkat” + “Fokus Sheila” dipenuhi emoji 🥹 🫶 🫵.  
-* **Kritik** – Terpusat di klaster “Tempo / Kritik Pace”.  
-* **FAQ Gap** – 6,46 % komentar hanyalah pertanyaan (“nonton di mana?” dlsb).  
-* **Risiko Spam** – Suspect user hanya 0,08 % → noise sangat rendah.  
-* **Indeks Sementara** – *Sheila Impact v0* di **10,66** (angka mentah, akan dinormalisasi di versi v1).
-
-> *Angka sentimen masih rule‑based; sprint label 100 komentar akan memvalidasi akurasinya.*
-
-<!-- Impact_v0 = 0.4 * SheilaMentionShare(%) 
-          + 0.4 * max(0, PositiveLift_pp) 
-          + 0.2 * max(0, EmojiLift * 10)
-“Cluster ‘Short Praise’ menyumbang [P1]% komentar dengan 90% sentimen positif.”)* -->
-
----
-
-## 🚀 Snapshot Insights (v0)
-| Take‑away | Data point | So what? |
-|-------------|-----------------|---------------|
-| **Cerita & ending paling ramai dibahas** | Klaster *Plot/Ending* menampung **50,5 %** dari 6.147 komentar (3.107 post); hanya **9,4 %** di klaster ini yang menyebut Sheila. | Pace & akhir cerita jadi sorotan utama penonton, melebihi topik mengenai aktor. |
-| **Visual jadi kekuatan jelas** | *Visual/Production* = **18,4 %** komentar; mayoritas bernada positif. | Sinematografi layak di‑highlight di materi promo. |
-| **Duet Sheila × Vidi disukai** | Klaster “Sheila & Vidi” = **7,7 %** komentar dengan **45,8 %** eksplisit menyebut Sheila. | Kolaborasi ini memicu engagement—potensi konten lanjutan. |
-| **Pertanyaan “nonton di mana?” cukup populer** | *Access/WhereToWatch* memang kecil (**4,9 %**), tapi **95,7 %** komentarnya menyebutkan nama Sheila. | Buat FAQ / pinned comment untuk menekan pertanyaan berulang. |
-| **Kritik tempo terkonsentrasi** | *Pace/Critique* cuma **3,6 %** volume, namun **35,6 %** menyebut Sheila sambil memberikan kritik. | Perbaikan ritme cerita perlu diprioritaskan agar reputasi tetap positif. |
-| **One‑liner “keren!” mewarnai sentimen** | *Short Praise* = **3,1 %**, >90 % positif singkat. | Memberikan sinyal bagus dan bernilai optimis, tapi kurang mendalam sehingga terlalu susah hanya menilai berdasarkan klaster ini saja. |
-
-### TL;DR
-*Setengah percakapan penonton fokus ke alur & ending; visual dipuji.  
-Duet Sheila–Vidi menambah antusiasme, tetapi masih banyak yang menanyakan platform nonton dan mengeluhkan tempo cerita.  
-Semua temuan berbasis rule‑based & klaster—label manual dan model ML akan memperkuat angka di fase berikut.* 
-Lebih banyak membahas peran dan personalitas dari sheila itu sendiri dibandingkan dengan Sheila sebagai pemeran SORE
-
-
-### Sampel Comment Each Cluster
-
-=== Access/WhereToWatch ===
-- part vidi bilang " punya istri sheila dara siapa sih yang gaa insecure" terdengar alami dan nyentuh banget walupun ngungkapinnya se-santai i
-- Senang banget akhirnya Sheila Dara hadir di podhub, seru, lucu liat chemistry Vidi dan Sheila. Saya bukan pecinta film drama romantis, tpi a
-- sheila dara cantik banget sumpah, visualnya ngangenin, gak ngebosenin, gimana yang ngungkapinnya, udah ah pokoknya the best shiela, luv poko
-- Episode paling favorit gua ada sheila dara, seneng banget sumpaaah... Ngakak terus... Sehat-sehat yah kalian semua... Happy terussss...
-- Finally Akhirnya Podhub Berhasil Juga Ngundang Kak Sheila Dara .. gemeshhh
-
-=== Acting/Chemistry ===
-- emang idaman sih pasangan vidi ma sheila ini , ga selebai kya yg di umbar2 di publik , tapi aslinya saling sayang , saling suport , saling b
-- Kocak banget mereka berdua ,kompak keren gw suka liat sheila wajahnya gak ngebosenin
-- Sumpah Dara Cintanya beneran, ternyata sebelum Nikah Vidi udah sakit, dan Dara menerima , keren keren
-- Om Ded tolong bikinin Adi program dong Keren ngehostnya, asik
-- Aslinya gayanya Vidi kalah sama gayanya istri, kalah saing pantesan dilarang, emang gayanya keren banget
-
-=== Humor/Slang ===
-- OMM UNDANG DUTA S07 DONG!!!!
-- Waaah....bang @denzu berjasa ini... Akhirnya...
-- ini ke 6x nya gua tonton loh bang viiiiidiiiiiii
-- Lihat sheila udah nih. Undang lagi om biar nyanyi bareng
-- Sukses truuuuussss bang vidiiiiiii
-
-=== Pace/Critique ===
-- Gila sabtu ini gue bahagia banget,sheila dtg ke podhub,dan selucu itu dia.....bahagia bgt pasti kak vidi
-- sesuai ekspektasi banget, liat sheila berkeliaran di podcast pasti ada di podhub dan ya finally worth to wait! seruuuu!!
-- Parah wehh abis nonton ini gue bahagia banget,sheila dtg ke podhub,dan selucu itu dia.....bahagia bgt pasti kak vidi
-- Yeahhhh.....   Akhirnya Ibu Negara di Podhub juga.  Pasti trending nih..  Semoga Next datang lagi ya jangan cuma pas mo promo film aja
-- MASYA ALLAH... TERIMA KASIH SHEILA UDAH MAU DATENG KE PODHUB. DAN INI EPISODE TER TER TER TERFAVORITE YANG PASTI BAKAL GW TONTON RATUSAN KAL
-
-=== Personality & Introvert Chemistry ===
-- Guys,sheila itu introvert bukan ansos. Introvert itu kalo sm orang yg udh kenal dan akrab dia bakal seru juga. Beda kalo ansos yg emg bner2 
-- sheilaa yang katanya introvert gak kalah energinya sama vidi di video ini
-- orang introvert klo masuk podhub jdi awkward gak sih  aneh tapi lucu
-- Extrovert fix ingetnya general introvert ingetnya emang yang detail
-- introvert seasik ini woyyyy
-
-=== Plot/Ending ===
-- Baru Mulai aja udah pecahh  Makin betah sama konten nya
-- WAIT?AKHIRNYAAAAA
-- Pas nonton tu aq ketawa" pokoknya happy bgtttt.... Tapi pas baca komen aq tu kaya nyes bgt dihati komen " sahabat podhub tu positif n mbikin
-- Podcast penuh tawa tp sedihh secara bersamaan dr awal smpe akhirr... Semangat yaa vid, aku  juga lagi survive sm penyakit ginjalku. Dan sllu
-- adhi tuh cocok setiap di undang di podhub, seru banget pas ngomong dan joke nya ngena di semua jadi kayak nyambung. pinter pembawaannya, kel
-
-=== Sheila & Vidi Duo / Greetings	 ===
-- Om ded kaya seneng bangga bgttt lihat mereka bahagia adem ayem apalagi lihat vidi yang bener* full senyum ceria dan dengan bangganya cerita 
-- Salut sama keterbukaan dan kejujuran Vidi & Sheila. Perjalanan cinta kalian itu bukti nyata kalau jodoh nggak akan kemana. Terima kasih suda
-- Ya Allah, beri vidi kesehatan & panjang umur, Krn energy nya membahagiakan banyak org.
-- Dari awal cuma mau nonton iseng, eh malah dapet pelajaran soal sabar, cinta, dan kehidupan. Sehat terus ya Vidi, Sheila, dan Om Deddy
-- Terharu banget waktu denger sheila ngomong kurangnya vidi cuma bersinnya doang. Liat deh mata vidi itu terharu mau nangis dan aku jg berasa.
-
-=== Sheila-Focused ===
-- Seumur umur baru kali ini gua nonton podcast si kukuh sampe abis. Kemaren2 ga kuat gua sama ni orang ngeselin banget
-- Kukuh biasanya chaos… tapi kali ini chaos-nya terstruktur karena Sheila juga sama gilanya
-- Lah kok malah nyambung, kukuh menemukan lawan sepadan
-- kali ini ngeliat kukuh jadi kelihatan lucu
-- Dua orang pinter yg ngeselin  Seruuuu bangettt… Kuat banget Kukuh ditatap sama sheila
-
-=== Short Praise ===
-- No 8
-- Trending no 1
-- Best couple of the year sih
-- Yandy Laurens is on his run to becoming one of the greatest Indonesian directors
-- 4:59 Gua tebak film nomor 1 Bang Pandji adalah Jokowi adalah Kita (2014)
-
-=== Visual/Production ===
-- Senin pagi ini ak nonton pudhub.. Sore nya ak lagsung bawa team ak nonton film Sore Ka Sheila Dara...  Film nya bagus banget  Kaka keren ban
-- kak Sheilaaa kak Vidiii, sukak bgt film "Sore" nya, dari trailer pun aku kehook dari premise ceritanya.. berasa balik lagi ke kualitas film-
-- Bahagia sihhh, setelah minggu lalu nge-skip, berharap Sabtu ini baik dan ternyata lebih dari baik, karena yg dinanti selama ini, dan makin b
-- "gue bersyukur Tuhan kasih karakter sore in real life dikehidupan gue"  setelah kak vidi ngomong gitu kepalaku langsung flashback ke film SO
-- Finally, the wait is over. Ibu Negara akhirnya nongol di Podhub. Aku juga udah nonton film SORE tgl 10 kemarin. Filmnya keren parah, mind-bl
-
----
+Eksperimen di [Try_model.ipynb](Try_model.ipynb) hanya mengevaluasi klasifikasi bila file label manusia lokal `manual_labels.csv` tersedia. Tanpa label tersebut, notebook melewati evaluasi dan tidak menampilkan klaim performa.

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="350" viewBox="0 0 900 350" role="img" aria-labelledby="mention-title mention-desc">
+  <title id="mention-title">Komentar yang menyebut Sheila</title>
+  <desc id="mention-desc">1.046 dari 6.418 observasi, atau 16,30%, menyebut Sheila.</desc>
+  <rect width="900" height="350" fill="#FFFFFF"/>
+  <text x="36" y="42" fill="#23313F" font-size="23" font-weight="600" font-family="Arial, sans-serif">Komentar yang menyebut Sheila</text>
+  <text x="255" y="81" fill="#526170" font-size="13" font-family="Arial, sans-serif">Jumlah observasi</text>
+  <line x1="255.0" y1="96" x2="255.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="255.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">0</text>
+  <line x1="345.0" y1="96" x2="345.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="345.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">1.000</text>
+  <line x1="435.0" y1="96" x2="435.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="435.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">2.000</text>
+  <line x1="525.0" y1="96" x2="525.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="525.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">3.000</text>
+  <line x1="615.0" y1="96" x2="615.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="615.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">4.000</text>
+  <line x1="705.0" y1="96" x2="705.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="705.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">5.000</text>
+  <line x1="795.0" y1="96" x2="795.0" y2="256" stroke="#DCE3E9" stroke-width="1"/>
+  <text x="795.0" y="282" text-anchor="middle" fill="#526170" font-size="13" font-family="Arial, sans-serif">6.000</text>
+  <text x="36" y="143" fill="#23313F" font-size="16" font-family="Arial, sans-serif">Menyebut Sheila</text>
+  <rect x="255" y="120" width="94.1" height="32" fill="#2364AA"/>
+  <text x="359.1" y="143" fill="#23313F" font-size="15" font-weight="600" font-family="Arial, sans-serif">1.046</text>
+  <text x="36" y="225" fill="#23313F" font-size="16" font-family="Arial, sans-serif">Komentar lain</text>
+  <rect x="255" y="202" width="483.5" height="32" fill="#8291A0"/>
+  <text x="748.5" y="225" fill="#23313F" font-size="15" font-weight="600" font-family="Arial, sans-serif">5.372</text>
+  <text x="36" y="322" fill="#526170" font-size="14" font-family="Arial, sans-serif">Dasar: 6.418 komentar setelah pembersihan dan deduplikasi.</text>
+</svg>
