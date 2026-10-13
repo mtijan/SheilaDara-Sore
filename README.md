@@ -25,14 +25,8 @@
 
 ![Diagram batang persentase label positif menurut aturan kata: 26,96 persen dan 14,50 persen; label belum divalidasi manusia.](assets/sentiment.svg)
 
-## Insight dan langkah berikutnya
-
-- **Penyebutan Sheila tidak mendominasi jumlah komentar, tetapi percakapannya lebih panjang.** Selisih rata-rata **6,89 token** dan median **5 token** menunjukkan ada bahan untuk dibaca lebih jauh. Tinjau sampel komentar secara manual untuk menemukan tema yang berulang; panjang komentar sendiri belum menjelaskan alasan orang menulisnya.
-- **Sinyal positif masih berupa hipotesis.** Selisih **12,46 poin persentase** berasal dari aturan kata yang belum divalidasi. Beri label pada sampel bersama penilai manusia sebelum menyebut respons audiens sebagai “positif”. [Telaah awal berbantuan asisten](reviews/README.md) hanya membantu menemukan calon kesalahan aturan.
-- **Pola gabungan sangat dipengaruhi lima video.** Karena **71,72%** observasi berasal dari lima video, baca [hasil per video](reports/video_summary.csv) dan kumpulkan sampel yang lebih seimbang sebelum memperluas kesimpulan ke percakapan YouTube secara umum.
-
 ## Kesimpulan
 
-Dalam ekspor ini, Sheila disebut pada **16,30%** observasi. Komentar yang menyebutnya cenderung lebih panjang daripada komentar lain; pola itu juga terlihat pada **11 video** yang memiliki cukup observasi di kedua kelompok. Label positif berbasis aturan lebih sering muncul pada kelompok tersebut, tetapi **belum membuktikan sentimen publik yang sebenarnya**. Langkah paling berguna selanjutnya adalah membaca tema komentar per video dan memvalidasi sentimen dengan penilai manusia.
+Komentar yang menyebut Sheila memang lebih sedikit, tetapi cenderung lebih panjang. Arah perbedaan ini juga terlihat pada **11 video** dengan cukup komentar di kedua kelompok. Isi komentar tersebut layak dibaca lebih jauh untuk mengetahui topik yang sering dibahas.
 
-Perhitungan, perbandingan dalam video, dan tabel pendukung dapat dilihat langsung di [notebook analisis](Sheila_Dara_Sore_YT_Sentiment.ipynb).
+Aturan kata lebih sering memberi label positif pada komentar yang menyebut Sheila, tetapi **belum cukup untuk menyimpulkan pendapat penonton**. Selain itu, **71,72%** observasi berasal dari lima video. Jadi, hasil ini menunjukkan pola dalam ekspor yang tersedia; tema dan nada komentarnya perlu diperiksa per video serta dinilai manusia sebelum menjadi kesimpulan yang lebih luas.
